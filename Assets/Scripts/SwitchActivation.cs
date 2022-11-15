@@ -118,6 +118,7 @@ public class SwitchActivation : MonoBehaviour {
 
         return (outsideX || outsideY);
     }
+    
     public void Proceed(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

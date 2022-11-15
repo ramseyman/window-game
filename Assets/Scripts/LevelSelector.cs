@@ -10,6 +10,7 @@ public class LevelSelector : MonoBehaviour
     void Start(){}
     
     public void OpenScene(){
+        Debug.Log(level.ToString());
         SceneManager.LoadScene("Level " + level.ToString());
 
     }
