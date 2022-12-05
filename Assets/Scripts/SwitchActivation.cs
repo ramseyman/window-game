@@ -14,9 +14,12 @@ public class SwitchActivation : MonoBehaviour {
     ViewSwitchManager viewManager;
     BlindSwitchManager blindManager;
 
-    void Start() {
+    // LevelLoader a;
 
+    void Start() {
+        // a=GameObject.FindGameObjectWithTag("Load").GetComponent<LevelLoader>();
     }
+
     // Update is called once per frame
     void Update() {
 
@@ -119,7 +122,11 @@ public class SwitchActivation : MonoBehaviour {
         return (outsideX || outsideY);
     }
     
+
+
     public void Proceed(){
+        // a.LoadNextLevel();
+        // yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

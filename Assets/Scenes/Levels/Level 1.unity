@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1678,6 +1678,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2725646620345494428, guid: 1450b0a39a4003c4ab03b5dde1e962af, type: 3}
+      propertyPath: transitionTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8220799141049594564, guid: 1450b0a39a4003c4ab03b5dde1e962af, type: 3}
       propertyPath: m_RootOrder
       value: 0
