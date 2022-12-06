@@ -11,11 +11,13 @@ public class SwitchActivation : MonoBehaviour {
     [SerializeField]
     private GameObject[] switches;
 
+    LevelLoader a;
+
     ViewSwitchManager viewManager;
     BlindSwitchManager blindManager;
 
     void Start() {
-
+        a=GameObject.FindGameObjectWithTag("Load").GetComponent<LevelLoader>();
     }
     // Update is called once per frame
     void Update() {
@@ -93,6 +95,7 @@ public class SwitchActivation : MonoBehaviour {
     }
 
     public void Proceed(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        a.LoadNextLevel();
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
