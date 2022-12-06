@@ -14,10 +14,10 @@ public class SwitchActivation : MonoBehaviour {
     ViewSwitchManager viewManager;
     BlindSwitchManager blindManager;
 
-    // LevelLoader a;
+    LevelLoader a;
 
     void Start() {
-        // a=GameObject.FindGameObjectWithTag("Load").GetComponent<LevelLoader>();
+        a=GameObject.FindGameObjectWithTag("Load").GetComponent<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -125,8 +125,7 @@ public class SwitchActivation : MonoBehaviour {
 
 
     public void Proceed(){
-        // a.LoadNextLevel();
-        // yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        a.LoadNextLevel();
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

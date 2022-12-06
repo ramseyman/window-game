@@ -12,11 +12,7 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // this is currently just when a button is clicked?
-        if(Input.GetMouseButtonDown(0)){
-            LoadNextLevel();
-        }
-        // if the above is commented out, it can proceed to the next level but the start transition has disappeared for some reason and only starts on the end animation
+        
     }
 
     public void LoadNextLevel(){
