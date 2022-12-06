@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SwitchActivation : MonoBehaviour {
 
     [SerializeField]
-    private Camera cam;
+    private GameObject view;
 
     [SerializeField]
     private GameObject[] switches;
@@ -14,12 +14,9 @@ public class SwitchActivation : MonoBehaviour {
     ViewSwitchManager viewManager;
     BlindSwitchManager blindManager;
 
-    LevelLoader a;
-
     void Start() {
-        a=GameObject.FindGameObjectWithTag("Load").GetComponent<LevelLoader>();
-    }
 
+    }
     // Update is called once per frame
     void Update() {
 
@@ -59,7 +56,7 @@ public class SwitchActivation : MonoBehaviour {
             BlindSwitchManager bm = gameSwitch.GetComponent<BlindSwitchManager>();
             if (CheckBounds(gameSwitch))
                 bm.Viewed();
-            else if(CheckOutside(gameSwitch))
+            else
             {
                 bm.Unviewed();
             }
@@ -68,8 +65,9 @@ public class SwitchActivation : MonoBehaviour {
 
     public bool CheckBounds(GameObject gameSwitch){
         SpriteRenderer render = gameSwitch.GetComponent<SpriteRenderer>();
-        float camHeight = cam.orthographicSize;
-        float camWidth = cam.orthographicSize * cam.aspect;
+        SpriteRenderer cam = view.GetComponent<SpriteRenderer>();
+        float camHeight = cam.bounds.size.y;
+        float camWidth = cam.bounds.size.x;
 
         float camMinX = cam.transform.position.x - camWidth;
         float camMaxX = cam.transform.position.x + camWidth;
@@ -77,11 +75,11 @@ public class SwitchActivation : MonoBehaviour {
         float camMinY = cam.transform.position.y - camHeight;
         float camMaxY = cam.transform.position.y + camHeight;
 
-        float switchMinX = render.transform.position.x - render.bounds.size.x / 2f;
-        float switchMaxX = render.transform.position.x + render.bounds.size.x / 2f;
+        float switchMinX = render.transform.position.x - render.bounds.size.x / 1.3f;
+        float switchMaxX = render.transform.position.x + render.bounds.size.x / 1.3f;
 
-        float switchMinY = render.transform.position.y - render.bounds.size.y / 2f;
-        float switchMaxY = render.transform.position.y + render.bounds.size.y / 2f;
+        float switchMinY = render.transform.position.y - render.bounds.size.y / 1.3f;
+        float switchMaxY = render.transform.position.y + render.bounds.size.y / 1.3f;
 
         bool withinX = false;
         bool withinY = false;
@@ -94,38 +92,7 @@ public class SwitchActivation : MonoBehaviour {
         return (withinX && withinY);
     }
 
-    public bool CheckOutside(GameObject gameSwitch){
-        SpriteRenderer render = gameSwitch.GetComponent<SpriteRenderer>();
-        float camHeight = cam.orthographicSize;
-        float camWidth = cam.orthographicSize * cam.aspect;
-
-        float camMinX = cam.transform.position.x - camWidth;
-        float camMaxX = cam.transform.position.x + camWidth;
-
-        float camMinY = cam.transform.position.y - camHeight;
-        float camMaxY = cam.transform.position.y + camHeight;
-
-        float switchMinX = render.transform.position.x - render.bounds.size.x / 2f;
-        float switchMaxX = render.transform.position.x + render.bounds.size.x / 2f;
-
-        float switchMinY = render.transform.position.y - render.bounds.size.y / 2f;
-        float switchMaxY = render.transform.position.y + render.bounds.size.y / 2f;
-
-        bool outsideX = false;
-        bool outsideY = false;
-
-        if (switchMinX > camMaxX || switchMaxX < camMinX)
-            outsideX = true;
-        if (switchMinY > camMaxY || switchMaxY < camMinY)
-            outsideY = true;
-
-        return (outsideX || outsideY);
-    }
-    
-
-
     public void Proceed(){
-        a.LoadNextLevel();
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

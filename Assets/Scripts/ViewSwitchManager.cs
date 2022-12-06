@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ViewSwitchManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject on;
+
+    [SerializeField]
+    private GameObject off;
+
     public bool active = false;
 
     // Start is called before the first frame update
@@ -20,9 +26,13 @@ public class ViewSwitchManager : MonoBehaviour
 
     public void Viewed(){
         active = true;
+        on.SetActive(true);
+        off.SetActive(false);
     }
 
     public void Unviewed(){
         active = false;
+        off.SetActive(true);
+        on.SetActive(false);
     }
 }

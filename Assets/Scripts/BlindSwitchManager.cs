@@ -6,6 +6,9 @@ public class BlindSwitchManager : MonoBehaviour
 {
     public bool active = false;
 
+    [SerializeField]
+    private GameObject on;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +24,12 @@ public class BlindSwitchManager : MonoBehaviour
     public void Viewed()
     {
         active = false;
+        on.SetActive(false);
     }
 
     public void Unviewed()
     {
         active = true;
+        on.SetActive(true);
     }
 }
